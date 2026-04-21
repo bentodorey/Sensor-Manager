@@ -1,9 +1,9 @@
 # Relatório de Projeto <!-- omit in toc -->
 
 - Licenciatura em Engenheira Informática 2024/2025 [IADE](https://www.iade.europeia.pt/)   <!-- omit in toc -->
-- Projeto 1º ano, 1º semestre
-- Prática pedagógica: PBL
-- Unidades curriculares: Fundamentos da Programação & Estruturação do Pensamento Lógico
+- Projeto 2º ano, 2º semestre
+- Prática pedagógica: 
+- Unidades curriculares: Programação Web
 
 ## Índice <!-- omit in toc -->
 
