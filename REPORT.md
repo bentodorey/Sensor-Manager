@@ -20,7 +20,9 @@
 ## Equipa
 
 Martim Fonseca 
+
 Bento D'Orey 
+
 Vasco de Sousa Pinto 20231182
 
 ## Distribuição de Tarefas
