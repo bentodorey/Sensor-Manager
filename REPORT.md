@@ -71,3 +71,136 @@ Listar as funcionalidades que não foram implementadas no projeto.
 Dados Estáticos: De momento, os valores apresentados no dashboard são estáticos (hard-coded no HTML) para fins de demonstração de design.
 
 Interatividade Limitada: A falta de estados de alerta visuais (ex: mudar cor quando não há mesas) para indicar situações críticas de ocupação ou temperatura.
+
+
+### Casos de Uso e Modelo de Domínio (UML)
+
+Casos de Uso
+O sistema Library Monitor Pro permite monitorizar o estado de uma biblioteca em tempo real através de sensores.
+Atores:
+Utilizador (Estudante)
+Sistema de Sensores
+Casos de uso principais:
+Visualizar ocupação da biblioteca
+Consultar temperatura ambiente
+Ver número de mesas disponíveis
+Consultar histórico de ocupação
+Atualização automática de dados
+Modelo de Domínio (UML)
+Entidades principais:
+Sensor
+id
+tipo (temperatura, contagem, som)
+valor
+timestamp
+Métrica
+id
+tipo (ocupação, temperatura, mesas)
+valor
+data_registo
+Biblioteca
+id
+nome
+capacidade_total
+Relações:
+Um Sensor gera várias Métricas
+A Biblioteca agrega várias Métricas
+
+### User Tasks, User Flows e Wireframes
+
+User Tasks
+Ver rapidamente se a biblioteca está cheia
+Consultar temperatura antes de ir estudar
+Ver mesas disponíveis
+Analisar horários com menor ocupação
+User Flow (Exemplo)
+Utilizador abre o website
+Dashboard carrega automaticamente
+Dados são apresentados (tempo real ou simulados)
+Utilizador analisa métricas
+(Opcional) consulta gráfico histórico
+Wireframes
+Estrutura principal:
+Header
+Nome do sistema
+Hora atual
+Main Dashboard
+Cartões com métricas:
+Temperatura
+Pessoas
+Mesas livres
+Secção de gráficos
+Gráfico de ocupação (Chart.js)
+
+### Base de Dados: Explicação da Criação
+
+A base de dados foi desenhada para armazenar dados provenientes dos sensores e permitir análise futura.
+Tecnologia sugerida
+MySQL / PostgreSQL
+Tabelas principais
+Tabela: sensors
+id (PK)
+tipo
+localização
+Tabela: metrics
+id (PK)
+sensor_id (FK)
+valor
+timestamp
+Tabela: library
+id (PK)
+nome
+capacidade
+Relações
+Um sensor → várias métricas
+Uma biblioteca → vários sensores
+Justificação
+A separação entre sensores e métricas permite:
+Escalabilidade
+Histórico de dados
+Flexibilidade para novos sensores
+
+### Documentação da API REST
+
+Endpoints
+GET /metrics
+Retorna todas as métricas
+GET /metrics/latest
+Retorna os valores mais recentes
+POST /metrics
+Envia dados de um sensor
+
+### UI Assets, Design System & Interfaces Finais
+
+Design System
+Cores:
+Azul (principal)
+Branco (fundo)
+Cinza (secundário)
+Tipografia:
+Sans-serif (ex: Arial, Roboto)
+Ícones:
+Biblioteca Font Awesome
+Componentes UI
+Cards de métricas
+Gráficos (Chart.js)
+Header com relógio
+Interface Final
+A interface final apresenta:
+Layout limpo e responsivo
+Métricas em destaque
+Atualização em tempo real (planeada)
+
+### Esquema da Solução Técnica
+
+ecnologias
+Frontend: HTML5, CSS3, JavaScript
+Backend: (ex: Node.js / Express)
+Base de Dados: MySQL / PostgreSQL
+Visualização: Chart.js
+Fluxo de Dados
+Sensores capturam dados
+Backend processa e guarda na BD
+API disponibiliza dados
+Frontend consome API
+Dashboard atualiza
