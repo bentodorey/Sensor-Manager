@@ -19,9 +19,9 @@
 
 ## Equipa
 
-Martim Fonseca 
+Martim Fonseca 20241218
 
-Bento D'Orey 
+Bento D'Orey 20241233
 
 Vasco de Sousa Pinto 20231182
 
@@ -78,49 +78,91 @@ Interatividade Limitada: A falta de estados de alerta visuais (ex: mudar cor qua
 ### Casos de Uso e Modelo de Domínio (UML)
 
 Casos de Uso
+
 O sistema Library Monitor Pro permite monitorizar o estado de uma biblioteca em tempo real através de sensores.
+
 Atores:
+
 Utilizador (Estudante)
+
 Sistema de Sensores
+
 Casos de uso principais:
+
 Visualizar ocupação da biblioteca
+
 Consultar temperatura ambiente
+
 Ver número de mesas disponíveis
+
 Consultar histórico de ocupação
+
 Atualização automática de dados
+
 Modelo de Domínio (UML)
+
+
 Entidades principais:
+
 Sensor
+
 id
+
 tipo (temperatura, contagem, som)
+
 valor
+
 timestamp
+
 Métrica
+
 id
+
 tipo (ocupação, temperatura, mesas)
+
 valor
+
 data_registo
+
 Biblioteca
+
 id
+
 nome
+
 capacidade_total
+
 Relações:
+
 Um Sensor gera várias Métricas
+
 A Biblioteca agrega várias Métricas
+
 
 ### User Tasks, User Flows e Wireframes
 
+
+
 User Tasks
+
 Ver rapidamente se a biblioteca está cheia
+
 Consultar temperatura antes de ir estudar
+
 Ver mesas disponíveis
+
 Analisar horários com menor ocupação
+
 User Flow (Exemplo)
+
 Utilizador abre o website
 Dashboard carrega automaticamente
+
 Dados são apresentados (tempo real ou simulados)
+
 Utilizador analisa métricas
-(Opcional) consulta gráfico histórico
+
+consulta gráfico histórico
 Wireframes
 Estrutura principal:
 Header
