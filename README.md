@@ -12,7 +12,7 @@ https://www.canva.com/design/DAHCoT0kHjQ/CKzMOgBULVwIaRWtRzdlwg/edit?utm_content
 
 # Relatório de Projeto <!-- omit in toc -->
 
-- Licenciatura em Engenheira Informática 2024/2025 [IADE](https://www.iade.europeia.pt/)   <!-- omit in toc -->
+- Licenciatura em Engenheira Informática [IADE](https://www.iade.europeia.pt/)   <!-- omit in toc -->
 - Projeto 2º ano, 2º semestre
 - Prática pedagógica: 
 - Unidades curriculares: Programação Web
