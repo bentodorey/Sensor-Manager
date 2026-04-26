@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="utf-8"> 
+    <meta name="description" content="Monitorização em tempo real da biblioteca">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Monitor Pro</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1><i class="fas fa-book-reader"></i> Library Environment Monitor</h1>
+        <p id="date-time"></p>
+    </header>
+
+    <main class="dashboard">
+        <section class="stats-container">
+            <div class="card" id="card-temp">
+                <i class="fas fa-thermometer-half icon"></i>
+                <div class="info">
+                    <span class="label">Temperatura</span>
+                    <span class="value"><span id="temp">22</span>°C</span>
+                </div>
+            </div>
+
+            <div class="card" id="card-people">
+                <i class="fas fa-users icon"></i>
+                <div class="info">
+                    <span class="label">Pessoas</span>
+                    <span class="value" id="numPessoas">12</span>
+                </div>
+            </div>
+
+            <div class="card" id="card-tables">
+                <i class="fas fa-chair icon"></i>
+                <div class="info">
+                    <span class="label">Mesas Livres</span>
+                    <span class="value" id="numMesas">5</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="charts-container">
+            <div class="chart-box">
+                <h3>Ocupação ao Longo do Tempo</h3>
+                <canvas id="occupancyChart"></canvas>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
