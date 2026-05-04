@@ -13,7 +13,6 @@ if ($conn->connect_error) {
     die(json_encode(["erro" => "Falha na ligação"]));
 }
 
-// IMPORTANTE: Adicionámos a coluna 'temperatura' aqui
 $sql = "SELECT entradas, saidas, atual, temperatura, data_hora FROM contagens ORDER BY id DESC LIMIT 1";
 $resultado = $conn->query($sql);
 

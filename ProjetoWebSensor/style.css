@@ -1,63 +1,144 @@
-:root {
-    --primary: #2c3e50;
-    --accent: #3498db;
-    --bg: #f4f7f6;
-    --white: #ffffff;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* =========================================
+   BASE E RESET
+   ========================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+body { background-color: #f4f7f6; color: #333; }
+
+/* =========================================
+   BARRA DE NAVEGAÇÃO
+   ========================================= */
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 5%; background-color: white; border-bottom: 1px solid #eaeaea;
+}
+.logo { font-size: 1.2rem; font-weight: 700; color: #2c3e50; display: flex; align-items: center; gap: 10px; }
+.logo i { color: #3498db; }
+.nav-links { list-style: none; display: flex; gap: 20px; }
+.nav-links a { text-decoration: none; color: #7f8c8d; font-size: 0.9rem; font-weight: 600; transition: color 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: #2c3e50; }
+
+/* =========================================
+   SECÇÃO HERO (IMAGEM DE FUNDO)
+   ========================================= */
+/* =========================================
+   SECÇÃO HERO & SLIDESHOW
+   ========================================= */
+.hero {
+    position: relative; /* Necessário para segurar o slideshow */
+    height: 350px;
+    display: flex; align-items: center; padding: 0 10%;
+    overflow: hidden; /* Não deixa as imagens transbordarem */
+    background-color: #2c3e50;
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg);
-    margin: 0;
-    color: var(--primary);
+/* O contentor de todas as imagens */
+.slideshow {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1; /* Fica atrás do texto e dos cartões */
 }
 
-header {
-    text-align: center;
-    padding: 2rem;
-    background: var(--white);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+/* Cada imagem individual */
+.slide {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0; /* Começam invisíveis */
+    transition: opacity 1.5s ease-in-out; /* O efeito de transição suave */
 }
 
-.dashboard {
-    max-width: 1000px;
-    margin: 20px auto;
-    padding: 0 20px;
+/* Película escura por cima das imagens para o texto branco ler-se bem */
+.slide::after {
+    content: '';
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.65);
 }
+
+/* A classe que diz qual é a imagem a mostrar agora */
+.slide.active {
+    opacity: 1; 
+}
+
+.hero-content { 
+    position: relative;
+    z-index: 2; /* Fica à frente do slideshow */
+    color: white; 
+    margin-top: -50px; 
+}
+.hero-content h1 { font-size: 2.5rem; line-height: 1.2; margin-bottom: 15px; }
+.hero-content p { font-size: 1rem; color: #ecf0f1; opacity: 0.9; }
+/* =========================================
+   PAINEL PRINCIPAL & CARTÕES (OVERLAP)
+   ========================================= */
+.dashboard { padding: 0 5% 50px 5%; max-width: 1400px; margin: 0 auto; }
 
 .stats-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-bottom: 30px;
+    display: flex; gap: 20px; justify-content: space-between;
+    margin-top: -70px; /* Isto faz os cartões subirem para cima da imagem! */
+    position: relative; z-index: 10;
 }
 
 .card {
-    background: var(--white);
-    padding: 20px;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease;
+    background: white; border-radius: 16px; padding: 25px;
+    display: flex; align-items: center; gap: 20px; flex: 1;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+.card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.12); }
 
-.card:hover { transform: translateY(-5px); }
+.icon-box { font-size: 2.5rem; color: #3498db; }
+.info { display: flex; flex-direction: column; width: 100%; }
+.label { font-size: 0.85rem; color: #7f8c8d; font-weight: 600; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+.value { font-size: 2.2rem; font-weight: 700; color: #2c3e50; }
+.subtitle { font-size: 0.75rem; color: #95a5a6; margin-top: 5px; }
 
-.icon {
-    font-size: 2.5rem;
-    color: var(--accent);
-    margin-right: 20px;
+/* Botão de Reservar */
+.btn-reservar {
+    background-color: #34495e; color: white; border: none; border-radius: 6px;
+    padding: 5px 10px; font-size: 0.75rem; font-weight: 600; cursor: pointer;
+    margin-top: 5px; align-self: flex-start; transition: background 0.3s;
 }
+.btn-reservar:hover { background-color: #2c3e50; }
 
-.label { display: block; font-size: 0.9rem; color: #7f8c8d; }
-.value { font-size: 1.8rem; font-weight: bold; }
+/* Barra de Progresso */
+.progress-bg { width: 100%; height: 6px; background-color: #e2e8f0; border-radius: 3px; margin-top: 10px; overflow: hidden; }
+.progress-fill { height: 100%; width: 100%; background-color: #2ECC71; transition: width 0.8s ease, background-color 0.5s ease; }
 
+/* =========================================
+   GRÁFICO
+   ========================================= */
+.charts-container { margin-top: 30px; }
 .chart-box {
-    background: var(--white);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    background: white; border-radius: 16px; padding: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05); height: 400px; width: 100%;
 }
+.chart-box h3 { color: #2c3e50; margin-bottom: 20px; font-size: 1.1rem; }
 
+/* =========================================
+   WIDGETS INFERIORES
+   ========================================= */
+.bottom-widgets { display: flex; gap: 20px; margin-top: 30px; }
+.widget { background: white; padding: 20px; border-radius: 12px; flex: 1; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+.widget h4 { font-size: 0.9rem; color: #2c3e50; margin-bottom: 10px; }
+.widget p { font-size: 0.85rem; color: #7f8c8d; }
 
+/* =========================================
+   CLASSES DINÂMICAS DO JAVASCRIPT (O SEMÁFORO)
+   ========================================= */
+/* CORES MESAS / PESSOAS */
+.status-livre .icon, .status-livre .value { color: #2ECC71 !important; }
+.status-livre .progress-fill { background-color: #2ECC71 !important; }
+
+.status-medio .icon, .status-medio .value { color: #F39C12 !important; }
+.status-medio .progress-fill { background-color: #F39C12 !important; }
+
+.status-cheio .icon, .status-cheio .value { color: #E74C3C !important; }
+.status-cheio .progress-fill { background-color: #E74C3C !important; }
+
+/* CORES TEMPERATURA */
+.status-frio .icon, .status-frio .value { color: #3498db !important; }
+.status-confortavel .icon, .status-confortavel .value { color: #2ECC71 !important; }
+.status-quente .icon, .status-quente .value { color: #E74C3C !important; }
