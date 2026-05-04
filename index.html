@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Monitor Pro</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Barra de Navegação Superior -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-book-open"></i> Library Monitor Pro
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="active">[Início]</a></li>
+            <li><a href="#">[Mapa de Zonas]</a></li>
+            <li><a href="#">[Reservar Mesa]</a></li>
+            <li><a href="#">[Sugestões]</a></li>
+            <li><a href="#">[Eventos]</a></li>
+        </ul>
+    </nav>
+
+   <!-- Secção da Imagem de Fundo (Hero com Slideshow) -->
+    <section class="hero">
+        <!-- O nosso carrossel de imagens -->
+        <div class="slideshow">
+            <!-- A primeira imagem começa ativa -->
+            <div class="slide active" style="background-image: url('imagebiblio.png');"></div>
+            <div class="slide" style="background-image: url('cadeira.png');"></div>
+            <div class="slide" style="background-image: url('image.png');"></div>
+        </div>
+
+        <!-- Conteúdo (Texto e Relógio) por cima das imagens -->
+        <div class="hero-content">
+            <h1>Seu Espaço de Foco<br>em Tempo Real</h1>
+            <p id="date-time"><i class="far fa-clock"></i> A carregar relógio...</p>
+        </div>
+    </section>
+
+    <!-- Painel Principal -->
+    <main class="dashboard">
+        
+        <!-- Cartões de Dados (Com sobreposição à imagem) -->
+        <section class="stats-container">
+            <div class="card" id="card-temp">
+                <div class="icon-box"><i class="fas fa-thermometer-half icon"></i></div>
+                <div class="info">
+                    <span class="label">Temperatura Atual:</span>
+                    <span class="value"><span id="temp">--</span>°C</span>
+                </div>
+            </div>
+
+            <div class="card" id="card-people">
+                <div class="icon-box"><i class="fas fa-users icon"></i></div>
+                <div class="info">
+                    <span class="label">Pessoas:</span>
+                    <span class="value" id="numPessoas">--</span>
+                    <span class="subtitle" id="tendencia">Tendência: A atualizar...</span>
+                </div>
+            </div>
+
+            <div class="card" id="card-tables">
+                <div class="icon-box"><i class="fas fa-chair icon"></i></div>
+                <div class="info">
+                    <span class="label">Mesas Livres:</span>
+                    <span class="value" id="numMesas">--</span>
+                    <button class="btn-reservar">[Reservar Uma]</button>
+                    <div class="progress-bg">
+                        <div class="progress-fill" id="barra-mesas"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secção do Gráfico -->
+        <section class="charts-container">
+            <div class="chart-box">
+                <h3>Projeção de Ocupação (AI)</h3>
+                <canvas id="occupancyChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Widgets Inferiores -->
+        <section class="bottom-widgets">
+            <div class="widget">
+                <h4>1. [Crachá Virtual]</h4>
+                <p>Ainda não ganhaste o crachá de foco hoje.</p>
+            </div>
+            <div class="widget">
+                <h4>2. [Eventos]</h4>
+                <p>Hoje: Workshop de Currículos (18:00) -- Inscreve-te</p>
+            </div>
+            <div class="widget">
+                <h4>3. [Feedback]</h4>
+                <p>Ajuda-nos a melhorar. O que falta? (Sugestão)</p>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
