@@ -146,3 +146,160 @@ function passarSlide() {
 
 // Muda de slide a cada 4 segundos (4000 milissegundos)
 setInterval(passarSlide, 4000);
+
+// =========================================
+// 6. LÓGICA DO MAPA DE RESERVAS
+// =========================================
+
+// Função para fechar o Pop-up
+function fecharMapa() {
+    document.getElementById('reservaModal').style.display = 'none';
+    // Esconde o formulário também, para quando abrires de novo estar limpo
+    document.getElementById('form-reserva').style.display = 'none'; 
+}
+
+// Fechar o pop-up se o utilizador clicar fora da caixa branca (no fundo escuro)
+window.onclick = function(event) {
+    let modal = document.getElementById('reservaModal');
+    if (event.target == modal) {
+        fecharMapa();
+    }
+}
+
+// Função para abrir o formulário quando se clica numa mesa verde
+function abrirFormulario(numeroMesa) {
+    let formReserva = document.getElementById('form-reserva');
+    let nomeMesa = document.getElementById('nome-mesa-escolhida');
+    
+    // Mostra o formulário
+    formReserva.style.display = 'block';
+    // Escreve o número da mesa que a pessoa escolheu
+    nomeMesa.innerText = 'Mesa ' + numeroMesa;
+}
+
+function confirmarReserva() {
+    let nomeMesa = document.getElementById('nome-mesa-escolhida').innerText;
+    let mesaId = nomeMesa.replace('Mesa ', ''); // Extrai só o número da mesa
+    let nomeAluno = document.getElementById('nomeAluno').value;
+    let horaInicio = document.getElementById('horaInicio').value;
+    let horaFim = document.getElementById('horaFim').value;
+
+    // Verificar se os campos estão preenchidos
+    if (!nomeAluno || !horaInicio || !horaFim) {
+        alert("Por favor, preenche todos os campos!");
+        return;
+    }
+
+    // Preparar os dados para enviar para o PHP
+    let formData = new FormData();
+    formData.append('mesa_id', mesaId);
+    formData.append('nome', nomeAluno);
+    formData.append('hora_inicio', horaInicio);
+    formData.append('hora_fim', horaFim);
+
+    // Enviar para o servidor
+    fetch('reservar.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.sucesso) {
+            alert("Mesa reservada com sucesso!");
+            fecharMapa();
+            
+            // Magia visual: Muda logo a mesa para vermelho e impede novos cliques
+            let mesaElement = document.getElementById('mesa-' + mesaId);
+            mesaElement.classList.remove('livre');
+            mesaElement.classList.add('ocupada');
+            mesaElement.onclick = null; // Tira o poder de clicar
+            
+            // Limpar o formulário para a próxima vez
+            document.getElementById('nomeAluno').value = '';
+            document.getElementById('horaInicio').value = '';
+            document.getElementById('horaFim').value = '';
+        } else {
+            alert("Erro ao reservar: " + data.erro);
+        }
+    })
+    .catch(error => console.error('Erro:', error));
+}
+// =========================================
+// 7. ATUALIZAR O MAPA EM TEMPO REAL
+// =========================================
+
+function atualizarMapaReservas() {
+    fetch('ler_reservas.php')
+        .then(response => response.json())
+        .then(data => {
+            // 1. PRIMEIRO PASSO: Colocar todas as 6 mesas verdes (limpar o mapa)
+            for (let i = 1; i <= 6; i++) {
+                let mesa = document.getElementById('mesa-' + i);
+                if (mesa) {
+                    mesa.className = 'mesa livre'; // Fica verde
+                    mesa.innerText = 'Mesa ' + i;
+                    mesa.onclick = function() { abrirFormulario(i); }; // Fica clicável
+                }
+            }
+
+            // 2. SEGUNDO PASSO: Pintar de vermelho as que estão ocupadas agora
+            if (data.ocupadas && data.ocupadas.length > 0) {
+                data.ocupadas.forEach(id => {
+                    let mesaOcupada = document.getElementById('mesa-' + id);
+                    if (mesaOcupada) {
+                        mesaOcupada.className = 'mesa ocupada'; // Fica vermelha
+                        mesaOcupada.innerText = 'Ocupada'; // Muda o texto
+                        mesaOcupada.onclick = null; // Tira o poder de clicar
+                    }
+                });
+            }
+        })
+        .catch(error => console.error('Erro ao ler reservas:', error));
+}
+
+// Arranca logo a função quando a página abre para pintar o mapa corretamente
+atualizarMapaReservas();
+
+// Para o mapa ficar em tempo real, vamos mandá-lo atualizar a cada 5 segundos!
+setInterval(atualizarMapaReservas, 5000);
+// =========================================
+// 8. LISTA DE PRÓXIMAS RESERVAS
+// =========================================
+
+function atualizarListaReservas() {
+    // Vamos buscar as reservas (com o truque da hora para não ficar encravado na cache)
+    fetch('buscar_proximas_reservas.php?t=' + new Date().getTime())
+        .then(response => response.json())
+        .then(data => {
+            const lista = document.getElementById('lista-reservas');
+            lista.innerHTML = ''; // Limpa o "A carregar reservas..."
+
+            // Se houver reservas
+            if (data.reservas && data.reservas.length > 0) {
+                data.reservas.forEach(reserva => {
+                    let li = document.createElement('li');
+                    // Estilo super moderno para cada item da lista
+                    li.style.cssText = "background: #f8f9fa; margin-bottom: 10px; padding: 12px; border-radius: 8px; border-left: 4px solid #3498db; display: flex; justify-content: space-between; align-items: center;";
+                    
+                    li.innerHTML = `
+                        <div>
+                            <strong>Mesa ${reserva.mesa_id}</strong> <span style="color: #7f8c8d; font-size: 0.9em;">(${reserva.nome_aluno})</span>
+                        </div>
+                        <div style="background: #e1f0fa; color: #2980b9; padding: 4px 8px; border-radius: 4px; font-size: 0.85em; font-weight: bold;">
+                            ${reserva.hora_inicio} - ${reserva.hora_fim}
+                        </div>
+                    `;
+                    lista.appendChild(li);
+                });
+            } else {
+                // Se não houver reservas marcadas para hoje
+                lista.innerHTML = '<li style="text-align: center; color: #7f8c8d; margin-top: 20px;">Nenhuma reserva ativa para hoje.</li>';
+            }
+        })
+        .catch(error => console.error('Erro ao ler lista:', error));
+}
+
+// Arranca quando o site abre
+atualizarListaReservas();
+// Atualiza automaticamente a cada 5 segundos
+setInterval(atualizarListaReservas, 5000);

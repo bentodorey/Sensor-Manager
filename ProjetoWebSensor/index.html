@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library Monitor Pro</title>
+    <title>Sensor Manager</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -14,7 +14,7 @@
     <!-- Barra de Navegação Superior -->
     <nav class="navbar">
         <div class="logo">
-            <i class="fas fa-book-open"></i> Library Monitor Pro
+            <i class="fas fa-book-open"></i> Sensor Manager
         </div>
         <ul class="nav-links">
             <li><a href="#" class="active">[Início]</a></li>
@@ -69,20 +69,32 @@
                 <div class="info">
                     <span class="label">Mesas Livres:</span>
                     <span class="value" id="numMesas">--</span>
-                    <button class="btn-reservar">[Reservar Uma]</button>
-                    <div class="progress-bg">
+<button class="btn-reservar" onclick="document.getElementById('reservaModal').style.display='block'">[Reservar Uma]</button>                    <div class="progress-bg">
                         <div class="progress-fill" id="barra-mesas"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Secção do Gráfico -->
-        <section class="charts-container">
-            <div class="chart-box">
+        <!-- Secção dos Gráficos e Widgets Laterais -->
+        <section class="charts-container" style="display: flex; gap: 20px; align-items: stretch;">
+            
+            <!-- O teu gráfico atual (ocupa mais espaço) -->
+            <div class="chart-box" style="flex: 2;">
                 <h3>Projeção de Ocupação (AI)</h3>
                 <canvas id="occupancyChart"></canvas>
             </div>
+
+            <!-- A nova caixa de Próximas Reservas (ocupa o resto do espaço à direita) -->
+            <div class="side-info-box" style="flex: 1; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); overflow-y: auto; max-height: 400px;">
+                <h3 style="margin-bottom: 15px; color: #2c3e50;"><i class="fas fa-calendar-alt"></i> Próximas Reservas</h3>
+                
+                <!-- A lista que o Javascript vai preencher -->
+                <ul id="lista-reservas" style="list-style: none; padding: 0;">
+                    <li style="text-align: center; color: #7f8c8d; margin-top: 20px;">A carregar reservas...</li>
+                </ul>
+            </div>
+            
         </section>
 
         <!-- Widgets Inferiores -->
@@ -100,7 +112,34 @@
                 <p>Ajuda-nos a melhorar. O que falta? (Sugestão)</p>
             </div>
         </section>
+<!-- MODAL DE RESERVA DE MESAS -->
+    <div id="reservaModal" class="modal-escondido">
+        <div class="modal-conteudo">
+            <span class="fechar-modal" onclick="fecharMapa()">&times;</span>
+            <h2>Mapa da Biblioteca</h2>
+            <p>Seleciona uma mesa verde para reservar.</p>
+            
+            <div class="mapa-sala">
+                <!-- Mesas de Exemplo -->
+                <div class="mesa livre" id="mesa-1" onclick="abrirFormulario(1)">Mesa 1</div>
+                <div class="mesa livre" id="mesa-2" onclick="abrirFormulario(2)">Mesa 2</div>
+                <div class="mesa livre" id="mesa-3" onclick="abrirFormulario(3)">Mesa 3</div>
+                <div class="mesa livre" id="mesa-4" onclick="abrirFormulario(4)">Mesa 4</div>
+                <div class="mesa ocupada" id="mesa-5">Mesa 5</div> <!-- Exemplo de ocupada -->
+                <div class="mesa livre" id="mesa-6" onclick="abrirFormulario(6)">Mesa 6</div>
+            </div>
 
+            <!-- Formulário que aparece ao clicar numa mesa -->
+            <div id="form-reserva" style="display: none; margin-top: 20px;">
+                <h3>Reservar <span id="nome-mesa-escolhida"></span></h3>
+                <input type="text" id="nomeAluno" placeholder="O teu nome" required>
+                <input type="time" id="horaInicio" required>
+                <span> até </span>
+                <input type="time" id="horaFim" required>
+                <button class="btn-confirmar" onclick="confirmarReserva()">Confirmar</button>
+            </div>
+        </div>
+    </div>
     </main>
 
     <script src="script.js"></script>

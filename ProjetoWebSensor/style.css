@@ -142,3 +142,45 @@ body { background-color: #f4f7f6; color: #333; }
 .status-frio .icon, .status-frio .value { color: #3498db !important; }
 .status-confortavel .icon, .status-confortavel .value { color: #2ECC71 !important; }
 .status-quente .icon, .status-quente .value { color: #E74C3C !important; }
+/* =========================================
+   MODAL (POP-UP) DE RESERVAS
+   ========================================= */
+.modal-escondido {
+    display: none; /* Fica escondido por padrão */
+    position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
+}
+
+.modal-conteudo {
+    background-color: #fff; margin: 5% auto; padding: 30px;
+    border-radius: 16px; width: 80%; max-width: 600px;
+    position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.fechar-modal {
+    position: absolute; top: 15px; right: 20px; font-size: 28px;
+    font-weight: bold; color: #aaa; cursor: pointer;
+}
+.fechar-modal:hover { color: #333; }
+
+/* O desenho da sala */
+.mapa-sala {
+    background-color: #f8f9fa; border: 2px dashed #ccc; border-radius: 10px;
+    padding: 30px; display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 20px; margin-top: 20px;
+}
+
+/* As mesas */
+.mesa {
+    padding: 20px; text-align: center; border-radius: 8px; font-weight: bold;
+    cursor: pointer; transition: transform 0.2s; color: white;
+}
+.mesa.livre { background-color: #2ECC71; } /* Verde */
+.mesa.livre:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(46,204,113,0.4); }
+.mesa.ocupada { background-color: #E74C3C; cursor: not-allowed; } /* Vermelho */
+
+/* Botão confirmar */
+.btn-confirmar {
+    background-color: #3498db; color: white; border: none; padding: 10px 20px;
+    border-radius: 5px; cursor: pointer; margin-top: 10px;
+}
