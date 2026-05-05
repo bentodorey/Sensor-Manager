@@ -12,17 +12,16 @@
 
 <body>
     <nav class="navbar">
-        <div class="logo">
-            <i class="fas fa-book-open"></i> Sensor Manager
-        </div>
-        <ul class="nav-links">
-            <li><a href="#" class="active">[Início]</a></li>
-            <li><a href="#">[Mapa de Zonas]</a></li>
-            <li><a href="#">[Reservar Mesa]</a></li>
-            <li><a href="#">[Sugestões]</a></li>
-            <li><a href="#">[Eventos]</a></li>
-        </ul>
-    </nav>
+    <div class="logo">
+        <i class="fas fa-book-open"></i> Sensor Manager
+    </div>
+    <ul class="nav-links">
+        <li><a href="#" class="active">[Início]</a></li>
+        <li><a href="#dashboard">[Mapa de Zonas]</a></li>
+        <li><a href="#" onclick="document.getElementById('reservaModal').style.display='block'; return false;">[Reservar Mesa]</a></li>
+        <li><a href="#widget-feedback">[Sugestões]</a></li>
+    </ul>
+</nav>
 
     <section class="hero">
         <div class="slideshow">
@@ -37,25 +36,25 @@
         </div>
     </section>
 
-    <main class="dashboard">
+    <main class="dashboard" id="dashboard">
         
-        <section class="stats-container">
-            <div class="card" id="card-temp">
-                <div class="icon-box"><i class="fas fa-thermometer-half icon"></i></div>
-                <div class="info">
-                    <span class="label">Temperatura Atual:</span>
-                    <span class="value"><span id="temp">--</span>°C</span>
-                </div>
+    <section class="stats-container">
+        <div class="card" id="card-temp">
+            <div class="icon-box"><i class="fas fa-thermometer-half icon"></i></div>
+            <div class="info">
+                <span class="label">Temperatura Atual:</span>
+                <span class="value"><span id="temp">--</span>°C</span>
             </div>
+        </div>
 
-            <div class="card" id="card-people">
-                <div class="icon-box"><i class="fas fa-users icon"></i></div>
-                <div class="info">
-                    <span class="label">Pessoas:</span>
-                    <span class="value" id="numPessoas">--</span>
-                    <span class="subtitle" id="tendencia">Tendência: A atualizar...</span>
-                </div>
+        <div class="card" id="card-people">
+            <div class="icon-box"><i class="fas fa-users icon"></i></div>
+            <div class="info">
+                <span class="label">Pessoas:</span>
+                <span class="value" id="numPessoas">--</span>
+                <span class="subtitle" id="tendencia">Tendência: A atualizar...</span>
             </div>
+        </div>
 
             <div class="card" id="card-tables">
                 <div class="icon-box"><i class="fas fa-chair icon"></i></div>
@@ -86,28 +85,21 @@
             
         </section>
 
-        <section class="bottom-widgets" style="display: flex; gap: 20px; margin-top: 20px;">
-            
-            <div class="widget" id="widget-checkin" style="flex: 1; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                <h4 style="margin-bottom: 10px; color: #2c3e50;">1. [Check-in de Reserva]</h4>
-                <p style="margin-bottom: 10px; font-size: 0.9em; color: #7f8c8d;">Chegaste à biblioteca? Confirma a mesa!</p>
-                <input type="text" id="nomeCheckin" placeholder="O teu nome" style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
-                <button onclick="fazerCheckin()" style="width: 100%; padding: 8px; background: #2ECC71; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Confirmar Presença</button>
-            </div>
+    <section class="bottom-widgets">
+    <div class="widget" id="widget-checkin">
+        <h4>1. [Check-in de Reserva]</h4>
+        <p style="margin-bottom: 10px;">Chegaste à biblioteca? Confirma a mesa!</p>
+        <input type="text" id="nomeCheckin" placeholder="O teu nome" style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
+        <button onclick="fazerCheckin()" style="width: 100%; padding: 8px; background: #2ECC71; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: background 0.3s;">Confirmar Presença</button>
+    </div>
 
-            <div class="widget" style="flex: 1; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                <h4 style="margin-bottom: 10px; color: #2c3e50;">2. [Eventos]</h4>
-                <p style="color: #7f8c8d; font-size: 0.9em;">Hoje: Workshop de Currículos (18:00) -- Inscreve-te</p>
-            </div>
-
-            <div class="widget" style="flex: 1; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                <h4 style="margin-bottom: 10px; color: #2c3e50;">3. [Feedback]</h4>
-                <p style="margin-bottom: 10px; color: #7f8c8d; font-size: 0.9em;">Ajuda-nos a melhorar. O que falta?</p>
-                <textarea id="textoFeedback" placeholder="A tua sugestão..." style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; resize: vertical; min-height: 40px; font-family: inherit;"></textarea>
-                <button onclick="enviarFeedback()" style="width: 100%; padding: 8px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Enviar Sugestão</button>
-            </div>
-
-        </section>
+    <div class="widget" id="widget-feedback">
+        <h4>2. [Feedback]</h4>
+        <p style="margin-bottom: 10px;">Ajuda-nos a melhorar. O que falta?</p>
+        <textarea id="textoFeedback" placeholder="A tua sugestão..." style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; resize: vertical; min-height: 40px; font-family: inherit;"></textarea>
+        <button onclick="enviarFeedback()" style="width: 100%; padding: 8px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: background 0.3s;">Enviar Sugestão</button>
+    </div>
+</section>
     <div id="reservaModal" class="modal-escondido">
         <div class="modal-conteudo">
             <span class="fechar-modal" onclick="fecharMapa()">&times;</span>
