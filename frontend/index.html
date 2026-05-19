@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor Manager</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+    <div class="logo">
+        <i class="fas fa-book-open"></i> Sensor Manager
+    </div>
+    <ul class="nav-links">
+        <li><a href="#" class="active">[Início]</a></li>
+        <li><a href="#dashboard">[Mapa de Zonas]</a></li>
+        <li><a href="#" onclick="document.getElementById('reservaModal').style.display='block'; return false;">[Reservar Mesa]</a></li>
+        <li><a href="#widget-feedback">[Sugestões]</a></li>
+    </ul>
+</nav>
+
+    <section class="hero">
+        <div class="slideshow">
+            <div class="slide active" style="background-image: url('imagebiblio.png');"></div>
+            <div class="slide" style="background-image: url('cadeira.png');"></div>
+            <div class="slide" style="background-image: url('image.png');"></div>
+        </div>
+
+        <div class="hero-content">
+            <h1>Seu Espaço de Foco<br>em Tempo Real</h1>
+            <p id="date-time"><i class="far fa-clock"></i> A carregar relógio...</p>
+        </div>
+    </section>
+
+    <main class="dashboard" id="dashboard">
+        
+    <section class="stats-container">
+        <div class="card" id="card-temp">
+            <div class="icon-box"><i class="fas fa-thermometer-half icon"></i></div>
+            <div class="info">
+                <span class="label">Temperatura Atual:</span>
+                <span class="value"><span id="temp">--</span>°C</span>
+            </div>
+        </div>
+
+        <div class="card" id="card-people">
+            <div class="icon-box"><i class="fas fa-users icon"></i></div>
+            <div class="info">
+                <span class="label">Pessoas:</span>
+                <span class="value" id="numPessoas">--</span>
+                <span class="subtitle" id="tendencia">Tendência: A atualizar...</span>
+            </div>
+        </div>
+
+            <div class="card" id="card-tables">
+                <div class="icon-box"><i class="fas fa-chair icon"></i></div>
+                <div class="info">
+                    <span class="label">Mesas Livres:</span>
+                    <span class="value" id="numMesas">--</span>
+<button class="btn-reservar" onclick="document.getElementById('reservaModal').style.display='block'">[Reservar Uma]</button>                    <div class="progress-bg">
+                        <div class="progress-fill" id="barra-mesas"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="charts-container" style="display: flex; gap: 20px; align-items: stretch;">
+            
+            <div class="chart-box" style="flex: 2;">
+                <h3>Projeção de Ocupação (AI)</h3>
+                <canvas id="occupancyChart"></canvas>
+            </div>
+
+            <div class="side-info-box" style="flex: 1; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); overflow-y: auto; max-height: 400px;">
+                <h3 style="margin-bottom: 15px; color: #2c3e50;"><i class="fas fa-calendar-alt"></i> Próximas Reservas</h3>
+                
+                <ul id="lista-reservas" style="list-style: none; padding: 0;">
+                    <li style="text-align: center; color: #7f8c8d; margin-top: 20px;">A carregar reservas...</li>
+                </ul>
+            </div>
+            
+        </section>
+
+    <section class="bottom-widgets">
+    <div class="widget" id="widget-checkin">
+        <h4>1. [Check-in de Reserva]</h4>
+        <p style="margin-bottom: 10px;">Chegaste à biblioteca? Confirma a mesa!</p>
+        <input type="text" id="nomeCheckin" placeholder="O teu nome" style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;">
+        <button onclick="fazerCheckin()" style="width: 100%; padding: 8px; background: #2ECC71; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: background 0.3s;">Confirmar Presença</button>
+    </div>
+
+    <div class="widget" id="widget-feedback">
+        <h4>2. [Feedback]</h4>
+        <p style="margin-bottom: 10px;">Ajuda-nos a melhorar. O que falta?</p>
+        <textarea id="textoFeedback" placeholder="A tua sugestão..." style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; resize: vertical; min-height: 40px; font-family: inherit;"></textarea>
+        <button onclick="enviarFeedback()" style="width: 100%; padding: 8px; background: #3498db; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: background 0.3s;">Enviar Sugestão</button>
+    </div>
+</section>
+    <div id="reservaModal" class="modal-escondido">
+        <div class="modal-conteudo">
+            <span class="fechar-modal" onclick="fecharMapa()">&times;</span>
+            <h2>Mapa da Biblioteca</h2>
+            <p>Seleciona uma mesa verde para reservar.</p>
+            
+            <div class="mapa-sala">
+                <div class="mesa livre" id="mesa-1" onclick="abrirFormulario(1)">Mesa 1</div>
+                <div class="mesa livre" id="mesa-2" onclick="abrirFormulario(2)">Mesa 2</div>
+                <div class="mesa livre" id="mesa-3" onclick="abrirFormulario(3)">Mesa 3</div>
+                <div class="mesa livre" id="mesa-4" onclick="abrirFormulario(4)">Mesa 4</div>
+                <div class="mesa ocupada" id="mesa-5">Mesa 5</div>
+                <div class="mesa livre" id="mesa-6" onclick="abrirFormulario(6)">Mesa 6</div>
+            </div>
+
+            <div id="form-reserva" style="display: none; margin-top: 20px;">
+                <h3>Reservar <span id="nome-mesa-escolhida"></span></h3>
+                <input type="text" id="nomeAluno" placeholder="O teu nome" required>
+                <input type="time" id="horaInicio" required>
+                <span> até </span>
+                <input type="time" id="horaFim" required>
+                <button class="btn-confirmar" onclick="confirmarReserva()">Confirmar</button>
+            </div>
+        </div>
+    </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

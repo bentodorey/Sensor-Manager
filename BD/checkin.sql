@@ -1,0 +1,1 @@
+ALTER TABLE reservas_mesas ADD COLUMN status VARCHAR(20) DEFAULT 'pendente';

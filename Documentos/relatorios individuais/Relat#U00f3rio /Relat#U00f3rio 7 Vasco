@@ -1,0 +1,3 @@
+Relatório Semana 7
+Esta semana Conseguimos conectar o arduino ao wire frame e com isso vamos conseguir demonstrar na apresentação o trabalho a funcionar no seu potencial. Já temos tudo feito em termos do site, Só temos de confirmar o que gostamos em termos de design.
+A única coisa que falta é fazer codigo no arduino para que quando uma rezerva de uma mesa está feita , uma LED que estará na mesa acenda na cor incarnada.

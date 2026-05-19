@@ -1,0 +1,1 @@
+ALTER TABLE contagens ADD COLUMN temperatura FLOAT AFTER atual;

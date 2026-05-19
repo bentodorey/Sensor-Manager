@@ -1,0 +1,6 @@
+Tarefas Realizadas:
+Componentes: Ajustar melhor a precisao do sensor de temperatura, pois não estava tão certeiro com a realidade.
+
+Testes de Usabilidade e Responsividade: Ajustes no CSSpara garantir que o Dashboard e o mapa de reservas mantêm a estrutura visual correta em diferentes tamanhos de ecrã.
+Próximos Passos (Planeamento):
+Planear alguma solução para conseguirmos ligar o arduino ao WIFI, para conseguir demonstrar ao vivo os dados a atualizarem.

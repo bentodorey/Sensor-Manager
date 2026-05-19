@@ -1,0 +1,10 @@
+Relatório Individual- Martim Fonseca 20241218 semana 6
+Foco da Semana: Desenvolvimento do Painel Web (Dashboard) e Criação do Sistema de Gestão de Reservas.
+Tarefas Realizadas:
+•	Desenvolvimento da Interface (Frontend): Estruturação da página principal utilizando HTML e CSS. Foram criados cartões de monitorização em tempo real para exibir dados de Temperatura, Número de Pessoas e Mesas Livres, aplicando um sistema de cores (Semáforo) para facilitar a leitura.
+•	Implementação de Gráficos: Integração da biblioteca Chart.js para desenhar o gráfico dinâmico que mostra a evolução da ocupação do espaço ao longo do dia.
+•	Sistema de Reservas (Backend): Criação das tabelas na base de dados MySQL (reservas_mesas) e desenvolvimento dos scripts em PHP (reservar.php, ler_reservas.php). Foi construído um mapa interativo em forma de Pop-up onde o utilizador pode escolher e reservar uma mesa.
+•	Lógica de Check-in e Cancelamento Automático: Para resolver o problema das marcações fantasma (no-shows), foi programado um sistema de check-in com tolerância de 15 minutos. Se o aluno não confirmar a presença no site dentro desse tempo, o PHP expira a reserva e liberta a mesa automaticamente.
+•	Módulo de Feedback: Criação de um formulário funcional ligado à base de dados para recolher sugestões dos utilizadores.
+Desafios Encontrados:
+•	Sincronizar a atualização do mapa de reservas e dos dados do painel em tempo real sem obrigar o utilizador a recarregar a página. O problema foi resolvido implementando requisições assíncronas (fetch) em JavaScript com temporizadores (setInterval).
