@@ -11,9 +11,9 @@ Unidade Curricular: Programação Web · 2.º Ano, 2.º Semestre
 
 | Nome | Nº Estudante | Responsabilidade |
 |------|-------------|-----------------|
-| Martim Fonseca | 20241218 | Backend e lógica de processamento de dados |
+| Martim Fonseca | 20241218 | Backend e lógica de processamento de dados, Frontend|
 | Bento D'Orey | 20241233 | Configuração de sensores, captura de métricas em tempo real e apoio ao Frontend |
-| Vasco de Sousa Pinto | 20231182 | Frontend — estrutura HTML5 e estilização CSS |
+| Vasco de Sousa Pinto | 20231182 | Frontend — estrutura HTML5 e estilização CSS, Relatório |
 
 ---
 
