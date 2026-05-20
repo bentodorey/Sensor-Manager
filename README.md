@@ -34,7 +34,7 @@ Unidade Curricular: Programação Web · 2.º Ano, 2.º Semestre
 
 ## Visão Geral e Justificação
 
-O **Library Monitor Pro** nasceu da necessidade prática de os estudantes saberem, antes de se deslocarem, se vale a pena ir à biblioteca: está cheia? Há mesas livres? A temperatura está aceitável?
+O **Sensor Manager** nasceu da necessidade prática de os estudantes saberem, antes de se deslocarem, se vale a pena ir à biblioteca: está cheia? Há mesas livres? A temperatura está aceitável?
 
 Atualmente essa informação não está disponível em tempo real em nenhum sistema da instituição, o que obriga os estudantes a deslocações desnecessárias. A solução proposta resolve este problema expondo as leituras dos sensores físicos da biblioteca num dashboard web acessível a partir de qualquer dispositivo.
 
