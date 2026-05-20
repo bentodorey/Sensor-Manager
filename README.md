@@ -1,4 +1,4 @@
-# 📚 Library Monitor Pro
+#  Sensor Manager
 
 > Dashboard de monitorização em tempo real do estado de uma biblioteca — ocupação, temperatura e mesas disponíveis.
 
@@ -7,7 +7,7 @@ Unidade Curricular: Programação Web · 2.º Ano, 2.º Semestre
 
 ---
 
-## 👥 Equipa
+##  Equipa
 
 | Nome | Nº Estudante | Responsabilidade |
 |------|-------------|-----------------|
@@ -17,7 +17,7 @@ Unidade Curricular: Programação Web · 2.º Ano, 2.º Semestre
 
 ---
 
-## 📋 Índice
+##  Índice
 
 - [Visão Geral e Justificação](#visão-geral-e-justificação)
 - [Arquitetura da Solução](#arquitetura-da-solução)
