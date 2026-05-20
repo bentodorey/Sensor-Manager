@@ -46,7 +46,7 @@ A aplicação é estruturada de forma modular — frontend, backend, sensores e 
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│                  Library Monitor Pro                  │
+│                  Sensor Manager                       │
 │                                                       │
 │  ┌──────────┐    ┌──────────┐    ┌─────────────────┐ │
 │  │ Sensores │───▶│ Backend  │───▶│  Base de Dados  │ │
@@ -388,6 +388,6 @@ A API REST trata da comunicação entre sensores, backend e frontend.
 
 ## Conclusão
 
-O **Library Monitor Pro** apresenta uma solução modular e extensível para a monitorização em tempo real de bibliotecas. A arquitetura adotada — com separação clara entre frontend, backend, sensores e base de dados — facilita a integração progressiva das funcionalidades ainda em desenvolvimento e permite que cada componente evolua de forma independente.
+O **Sensor Manager** apresenta uma solução modular e extensível para a monitorização em tempo real de bibliotecas. A arquitetura adotada — com separação clara entre frontend, backend, sensores e base de dados — facilita a integração progressiva das funcionalidades ainda em desenvolvimento e permite que cada componente evolua de forma independente.
 
 A principal mais-valia do sistema é permitir ao estudante tomar decisões informadas antes de se deslocar, poupando tempo e melhorando a sua experiência de utilização da biblioteca.
