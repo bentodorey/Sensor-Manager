@@ -30,7 +30,7 @@ const occupancyChart = new Chart(ctx, {
     },
     options: {
         responsive: true,
-        maintainAspectRatio: true, 
+        maintainAspectRatio: false, 
         plugins: {
             legend: { display: true, position: 'top' }
         },
@@ -283,3 +283,35 @@ function enviarFeedback() {
     })
     .catch(error => console.error('Erro:', error));
 }
+function abrirAjuda() {
+    document.getElementById('modalAjuda').style.display = 'block';
+}
+
+function fecharAjuda() {
+    document.getElementById('modalAjuda').style.display = 'none';
+}
+
+window.addEventListener('click', function(e) {
+    const modal = document.getElementById('modalAjuda');
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+function carregarHistoricoReal() {
+    fetch('../backend/historico_ocupacao.php')
+        .then(response => response.json())
+        .then(dados => {
+            if (!dados || dados.length === 0) {
+                return;
+            }
+
+            occupancyChart.data.labels = dados.map(d => d.hora);
+            occupancyChart.data.datasets[0].data = dados.map(d => d.media);
+            occupancyChart.data.datasets[0].label = 'Ocupação real por hora';
+            occupancyChart.update();
+        })
+        .catch(err => console.error('Erro ao carregar histórico:', err));
+}
+
+carregarHistoricoReal();
+setInterval(carregarHistoricoReal, 5 * 60 * 1000);

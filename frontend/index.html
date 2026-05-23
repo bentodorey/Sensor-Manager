@@ -20,6 +20,7 @@
         <li><a href="#dashboard">[Mapa de Zonas]</a></li>
         <li><a href="#" onclick="document.getElementById('reservaModal').style.display='block'; return false;">[Reservar Mesa]</a></li>
         <li><a href="#widget-feedback">[Sugestões]</a></li>
+        <a href="admin-login.html" class="nav-admin"><i class="fas fa-shield-alt"></i> Admin</a>
     </ul>
 </nav>
 
@@ -71,9 +72,11 @@
         <section class="charts-container" style="display: flex; gap: 20px; align-items: stretch;">
             
             <div class="chart-box" style="flex: 2;">
-                <h3>Projeção de Ocupação (AI)</h3>
-                <canvas id="occupancyChart"></canvas>
-            </div>
+    <h3>Ocupação de Hoje</h3>
+    <div style="position: relative; height: 280px;">
+        <canvas id="occupancyChart"></canvas>
+    </div>
+</div>
 
             <div class="side-info-box" style="flex: 1; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); overflow-y: auto; max-height: 400px;">
                 <h3 style="margin-bottom: 15px; color: #2c3e50;"><i class="fas fa-calendar-alt"></i> Próximas Reservas</h3>
@@ -128,5 +131,51 @@
     </main>
 
     <script src="script.js"></script>
+
+<button class="btn-ajuda" onclick="abrirAjuda()" title="Como usar este site?">
+    <i class="fas fa-question"></i>
+</button>
+
+<div id="modalAjuda" class="modal-ajuda">
+    <div class="modal-ajuda-conteudo">
+        <span class="fechar-ajuda" onclick="fecharAjuda()">&times;</span>
+        <h2><i class="fas fa-book-open"></i> Como usar o Sensor-Manager</h2>
+        <p class="intro">Aqui está tudo o que podes fazer neste site:</p>
+
+        <div class="guia-seccao">
+            <div class="guia-icone" style="background:#3498db;"><i class="fas fa-chart-bar"></i></div>
+            <div>
+                <h3>Ver as métricas em tempo real</h3>
+                <p>No topo do dashboard vês três cartões com a temperatura ambiente, o número de pessoas atualmente na biblioteca, e as mesas disponíveis. Estes valores atualizam-se automaticamente.</p>
+            </div>
+        </div>
+
+        <div class="guia-seccao">
+            <div class="guia-icone" style="background:#2ECC71;"><i class="fas fa-chair"></i></div>
+            <div>
+                <h3>Reservar uma mesa</h3>
+                <p>Clica no botão <strong>"Reservar Uma"</strong> no cartão das mesas livres. Abre-se um mapa da biblioteca — escolhe uma mesa verde (livre), preenche o teu nome e o horário pretendido, e confirma. Mesas vermelhas já estão ocupadas.</p>
+            </div>
+        </div>
+
+        <div class="guia-seccao">
+            <div class="guia-icone" style="background:#F39C12;"><i class="fas fa-check-circle"></i></div>
+            <div>
+                <h3>Fazer check-in</h3>
+                <p>Quando chegares à biblioteca, vai ao widget <strong>"Check-in"</strong> no fundo da página, escreve o teu nome e confirma. <strong>Atenção:</strong> se não fizeres check-in nos primeiros 15 minutos da tua reserva, ela expira automaticamente e a mesa fica livre para outra pessoa.</p>
+            </div>
+        </div>
+
+        <div class="guia-seccao">
+            <div class="guia-icone" style="background:#9b59b6;"><i class="fas fa-comment-dots"></i></div>
+            <div>
+                <h3>Enviar feedback</h3>
+                <p>Tens uma sugestão ou queres reportar um problema? Usa o widget <strong>"Feedback"</strong> no fundo da página. As mensagens chegam diretamente à administração da biblioteca.</p>
+            </div>
+        </div>
+
+        <button class="btn-fechar-ajuda" onclick="fecharAjuda()">Percebi, obrigado!</button>
+    </div>
+</div>
 </body>
 </html>
