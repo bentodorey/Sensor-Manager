@@ -1,0 +1,7 @@
+Trabalho desenvolvido esta semana
+Esta semana o foco esteve em duas funcionalidades novas que respondem a necessidades identificadas anteriormente: uma área de administração protegida e um guia de utilizador integrado no dashboard público. Ambas tornam o sistema mais completo e mais próximo de um produto real.
+
+1. Área de Administração
+Até esta semana, o sistema não tinha forma de visualizar os dados acumulados nem de gerir reservas e mensagens de feedback sem aceder diretamente à base de dados via phpMyAdmin. Implementámos por isso uma zona administrativa protegida por autenticação, acessível a partir de um link discreto no dashboard público.
+2. Guia de Utilizador
+Por sugestão da docente de Interfaces, foi adicionado um guia de utilizador acessível por um botão flutuante no canto inferior direito do dashboard. O objetivo é reduzir a curva de aprendizagem para utilizadores novos, sem ser intrusivo para quem já sabe usar o sistema.
