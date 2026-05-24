@@ -33,7 +33,7 @@
 
 ## 1. Visão geral do projeto
 
-O **Library Monitor Pro** nasceu de uma observação simples: quando um aluno decide ir estudar para a biblioteca, está a apostar às cegas. Há lugares? A sala está cheia? Está calor a mais? A resposta só chega quando lá se está — e por essa altura já não há volta a dar.
+O **Sensor Manager** nasceu de uma observação simples: quando um aluno decide ir estudar para a biblioteca, está a apostar às cegas. Há lugares? A sala está cheia? Está calor a mais? A resposta só chega quando lá se está — e por essa altura já não há volta a dar.
 
 O projeto resolve isto com um dashboard web que mostra, em tempo real, três indicadores essenciais: **quantas pessoas estão na biblioteca**, **qual a temperatura ambiente**, e **quantas mesas estão livres**. Os dados vêm de um Arduino com sensores físicos colocados à entrada da sala (dois sensores de presença para contar entradas e saídas, e um sensor DHT11 para a temperatura). O aluno abre o site e decide em segundos se vale a pena ir.
 
@@ -51,7 +51,7 @@ O sistema tem três atores. O **Aluno** é o utilizador humano que acede ao dash
 
 ```
                        ┌────────────────────────────────┐
-                       │     Library Monitor Pro        │
+                       │        Sensor Manager          │
                        │                                │
    ┌──────────┐        │   ZONA PÚBLICA                 │
    │  Aluno   │ ─────▶️│   • Consultar ocupação atual   │
@@ -198,15 +198,15 @@ O dashboard público segue uma estrutura de três zonas verticais:
 
 ```
 ┌──────────────────────────────────────────────────────┐
-│  HEADER: Logo · "Library Monitor Pro" · Relógio      │
+│  HEADER: Logo · "Sensor Manager" · Relógio           │
 ├──────────────────────────────────────────────────────┤
 │  HERO: Slideshow com fotos da biblioteca             │
 │  Frase de impacto: "Seu Espaço de Foco em Tempo Real"│
 ├──────────────────────────────────────────────────────┤
 │  ┌─────────┐  ┌─────────┐  ┌──────────────────────┐  │
 │  │  TEMP   │  │ PESSOAS │  │  MESAS LIVRES        │  │
-│  │  22°C   │  │   43    │  │     12              │  │
-│  │  🌡️     │  │   👥    │  │  [Reservar Uma]     │  │
+│  │  22°C   │  │   43    │  │     12               │  │
+│  │  🌡️     │  │   👥   │  │  [Reservar Uma]      │   │
 │  └─────────┘  └─────────┘  └──────────────────────┘  │
 ├──────────────────────────────────────────────────────┤
 │  ┌────────────────────────┐  ┌────────────────────┐  │
@@ -219,7 +219,7 @@ O dashboard público segue uma estrutura de três zonas verticais:
 │  │ CHECK-IN           │    │ FEEDBACK           │    │
 │  │ [Nome] [Confirmar] │    │ [Mensagem] [Enviar]│    │
 │  └────────────────────┘    └────────────────────┘    │
-│                                              [ ? ]    │
+│                                                      │
 └──────────────────────────────────────────────────────┘
 ```
 
