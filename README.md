@@ -402,7 +402,7 @@ A principal mais-valia do sistema é permitir ao estudante tomar decisões infor
 
 # Relatório Final de Projeto — Sensor-Manager
 
-**Library Monitor Pro** · Dashboard de monitorização de uma biblioteca em tempo real
+**Sensor Manager** · Dashboard de monitorização de uma biblioteca em tempo real
 
 - Licenciatura em Engenharia Informática — IADE, Universidade Europeia
 - Unidade Curricular: Programação Web
