@@ -12,7 +12,7 @@
 |---|---|---|
 | Martim Fonseca | 20241218 | Backend em PHP, estrutura da base de dados, área de administração, integração com o frontend |
 | Bento D'Orey | 20241233 | Programação do Arduino, leitura dos sensores e envio dos dados, apoio ao frontend |
-| Vasco de Sousa Pinto | 20231182 | Estrutura HTML e estilização CSS do dashboard, design da interface |
+| Vasco Sousa Pinto | 20231182 | Estrutura HTML e estilização CSS do dashboard, design da interface |
 
 ---
 
