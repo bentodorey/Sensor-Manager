@@ -46,17 +46,17 @@ A aplicação é estruturada de forma modular — frontend, backend, sensores e 
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│                  Sensor Manager                       │
-│                                                       │
-│  ┌──────────┐    ┌──────────┐    ┌─────────────────┐ │
-│  │ Sensores │───▶│ Backend  │───▶│  Base de Dados  │ │
-│  │ físicos  │    │Node/Expr │    │ MySQL/PostgreSQL │ │
-│  └──────────┘    └────┬─────┘    └─────────────────┘ │
-│                       │ REST API                      │
-│                  ┌────▼─────┐                         │
-│                  │ Frontend │                         │
-│                  │HTML/CSS/JS│                        │
-│                  └──────────┘                         │
+│                  Sensor Manager                     │
+│                                                     │
+│  ┌──────────┐    ┌──────────┐    ┌─────────────────┐│
+│  │ Sensores │───▶│ Backend  │───▶│  Base de Dados  ││
+│  │ físicos  │    │Node/Expr │    │ MySQL/PostgreSQL││
+│  └──────────┘    └────┬─────┘    └─────────────────┘│
+│                       │ REST API                    │
+│                  ┌────▼────-─┐                      │
+│                  │ Frontend  │                      │
+│                  │HTML/CSS/JS│                      │
+│                  └──────────-┘                      │
 └─────────────────────────────────────────────────────┘
 ```
 
@@ -456,7 +456,7 @@ O sistema tem três atores. O **Aluno** é o utilizador humano que acede ao dash
                        │     Library Monitor Pro        │
                        │                                │
    ┌──────────┐        │   ZONA PÚBLICA                 │
-   │  Aluno   │ ─────▶️ │   • Consultar ocupação atual   │
+   │  Aluno   │ ─────▶️│   • Consultar ocupação atual   │
    │          │        │   • Ver temperatura            │
    └──────────┘        │   • Ver mesas disponíveis      │
                        │   • Reservar mesa              │
@@ -465,7 +465,7 @@ O sistema tem três atores. O **Aluno** é o utilizador humano que acede ao dash
                        │   • Consultar guia de uso      │
                        │                                │
    ┌──────────┐        │   ZONA RESTRITA                │
-   │  Admin   │ ─────▶️ │   • Iniciar/terminar sessão    │
+   │  Admin   │ ─────▶️│   • Iniciar/terminar sessão    │
    │          │        │   • Ver estatísticas globais   │
    └──────────┘        │   • Consultar histórico (24h)  │
                        │   • Gerir reservas             │
@@ -473,7 +473,7 @@ O sistema tem três atores. O **Aluno** é o utilizador humano que acede ao dash
                        │   • Ver utilização por mesa    │
                        │                                │
    ┌──────────┐        │   FLUXO AUTOMÁTICO             │
-   │ Arduino  │ ─────▶️ │   • Registar entrada/saída     │
+   │ Arduino  │ ─────▶️│   • Registar entrada/saída     │
    └──────────┘        │   • Registar temperatura       │
                        └────────────────────────────────┘
 ```
