@@ -676,10 +676,10 @@ A curto prazo, a equipa pretende:
 
 1. **Generalizar prepared statements** a todos os endpoints PHP, não apenas aos administrativos.
 2. **Implementar login básico para utilizadores normais** com sessões PHP, para que cada reserva esteja ligada a um aluno autenticado.
-3. **Adicionar uma indicação de tendência** no cartão de Pessoas (📈 a subir, 📉 a descer, ➡️ estável), comparando o último valor com a média da hora anterior.
-4. **Adicionar alertas visuais ativos** quando: capacidade > 90 %, temperatura > 26 °C, ou todas as mesas estão ocupadas.
-5. **Tornar o mapa de mesas configurável**, lendo a disposição da BD em vez do HTML.
-6. **Adicionar uma página de gestão de utilizadores admin** caso a equipa cresça.
+3. **Adicionar alertas visuais ativos** quando: capacidade > 90 %, temperatura > 26 °C, ou todas as mesas estão ocupadas.
+4. **Tornar o mapa de mesas configurável**, lendo a disposição da BD em vez do HTML.
+5. **Adicionar uma página de gestão de utilizadores admin** caso a equipa cresça.
+6. **Adicionar opção de grupos de Estudo**
 
 A médio prazo, faria sentido **mover o sistema para um servidor real** (com domínio próprio em vez de `localhost`), adicionar **notificações push** quando uma mesa reservada está prestes a expirar, e considerar a **migração da autenticação para tokens JWT** se a aplicação crescer para múltiplos clientes.
 
